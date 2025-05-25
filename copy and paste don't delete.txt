@@ -1,0 +1,80 @@
+//EXCEL: https://docs.google.com/spreadsheets/d/1qpBJ73UJHJrZa3aeOLW2PoR-9LXrXfQSoDDbl3B2lx0/edit?gid=0#gid=0 
+
+//Historial de 2 equipos ordenados ascendentemente por fecha
+
+SELECT * FROM partido
+WHERE id_equipo in ("","")
+ORDER BY id_equipo ASC
+
+//Promedios de un solo equipo
+
+SELECT 'Local' AS condicion, 
+       AVG(goles) AS promedio_goles, 
+       AVG(remates) AS promedio_remates, 
+       AVG(remates_directos) AS promedio_remates_directos,
+       AVG(faltas) AS promedio_faltas,
+       AVG(amarillas) AS promedio_amarillas,
+       AVG(corners) AS promedio_corners
+FROM partido 
+WHERE id_equipo = 'SC' AND localia = 1
+
+UNION ALL
+
+SELECT 'Visitante' AS condicion, 
+       AVG(goles) AS promedio_goles, 
+       AVG(remates) AS promedio_remates, 
+       AVG(remates_directos) AS promedio_remates_directos,
+       AVG(faltas) AS promedio_faltas,
+       AVG(amarillas) AS promedio_amarillas,
+       AVG(corners) AS promedio_corners
+FROM partido 
+WHERE id_equipo = 'SC' AND localia = 0
+
+UNION ALL
+
+SELECT 'Total' AS condicion, 
+       AVG(goles) AS promedio_goles, 
+       AVG(remates) AS promedio_remates, 
+       AVG(remates_directos) AS promedio_remates_directos,
+       AVG(faltas) AS promedio_faltas,
+       AVG(amarillas) AS promedio_amarillas,
+       AVG(corners) AS promedio_corners
+FROM partido 
+WHERE id_equipo = 'SC';
+
+//Promedios en Contra de un solo equipo
+
+SELECT 'Local' AS condicion, 
+       AVG(goles) AS promedio_goles_recibidos,
+       AVG(remates) AS promedio_remates_recibidos,
+       AVG(remates_directos) AS promedio_remates_directos_recibidos,
+       AVG(faltas) AS promedio_faltas_recibidas,
+       AVG(amarillas) AS promedio_amarillas_recibidas,
+       AVG(corners) AS promedio_corners_recibidos
+FROM partido
+WHERE id_rival = 'MEL' AND localia = 0
+
+UNION ALL
+
+SELECT 'Visitante', 
+       AVG(goles),
+       AVG(remates),
+       AVG(remates_directos),
+       AVG(faltas),
+       AVG(amarillas),
+       AVG(corners)
+FROM partido
+WHERE id_rival = 'MEL' AND localia = 1
+
+UNION ALL
+
+SELECT 'Total', 
+       AVG(goles),
+       AVG(remates),
+       AVG(remates_directos),
+       AVG(faltas),
+       AVG(amarillas),
+       AVG(corners)
+FROM partido
+WHERE id_rival = 'MEL';
+
