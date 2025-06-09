@@ -18,7 +18,7 @@ def analizar_prediccion():
         tipos_prediccion = ["Goles", "Remates", "Corners"]
         columnas = {"Goles": "goles", "Remates": "remates", "Corners": "corners"}
 
-        conexion = sqlite3.connect("B_Soccer.db")
+        conexion = sqlite3.connect("N_Soccer.db")
         cursor = conexion.cursor()
 
         fig, axs = plt.subplots(2, 3, figsize=(18, 8))
