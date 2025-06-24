@@ -17,13 +17,13 @@ def analizar_prediccion():
             messagebox.showerror("Error", "Debes ingresar ambos IDs de equipo.")
             return
 
-        tipos_prediccion = ["Goles", "Remates", "Corners", "Remates Directos", "Faltas"]
+        tipos_prediccion = ["Goles", "Remates", "Remates Directos", "Faltas", "Corners"]
         columnas = {
             "Goles": "goles",
             "Remates": "remates",
-            "Corners": "corners",
             "Remates Directos": "remates_directos",
-            "Faltas": "faltas"
+            "Faltas": "faltas",
+            "Corners": "corners"
         }
 
         conexion = sqlite3.connect("N_Soccer.db")
