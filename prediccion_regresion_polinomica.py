@@ -26,7 +26,7 @@ def analizar_prediccion():
             "Faltas": "faltas"
         }
 
-        conexion = sqlite3.connect("N_Soccer.db")
+        conexion = sqlite3.connect("B_Soccer.db")
         cursor = conexion.cursor()
 
         fig, axs = plt.subplots(2, 5, figsize=(24, 8))
